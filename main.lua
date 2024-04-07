@@ -30,7 +30,21 @@ Tab:Toggle{
 Sense.teamSettings.enemy.box3d = state
 end
 }
-
+Tab:ColorPicker{
+	Style = Mercury.ColorPickerStyles.Legacy,
+	Callback = function(color)
+       Sense.teamSettings.enemy.box3dColor[1] = color
+       end
+}
+Tab:Toggle{
+	Name = "HealthBar",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state) 
+                Sense.teamSettings.enemy.healthBar  = state
+                Sense.teamSettings.enemy.healthText  = state
+        end
+}
 Tab:Button{
 	Name = "Load ESP",
 	Description = nil,
