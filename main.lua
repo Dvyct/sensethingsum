@@ -1,4 +1,5 @@
 -- made by rat / dvyct on discord extra commit
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Dvyct/lemonaimbot/main/main.lua"))() 
 local Sense = loadstring(game:HttpGet('https://sirius.menu/sense'))()
 local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/deeeity/mercury-lib/master/src.lua"))()
 local GUI = Mercury:Create{
@@ -7,6 +8,13 @@ local GUI = Mercury:Create{
     Theme = Mercury.Themes.Serika,
     Link = "https://github.com/deeeity/mercury-lib"
 }
+GUI:Credit{
+	Name = "rat",
+	Description = "Universal Hub for Lemon (mostly a skid im using it just for compatability reasons)",
+	V3rm = "https://thunder-softworks.weebly.com/",
+	Discord = "dvyct"
+}
+
 
 local Tab = GUI:Tab{
 	Name = "ESP",
@@ -115,11 +123,4 @@ Tab:Slider{
 	Callback = function(state) 
         _G.AimbotSensitivity = state
         end
-}
-}
-GUI:Credit{
-	Name = "rat",
-	Description = "Universal Hub for Lemon (mostly a skid im using it just for compatability reasons)",
-	V3rm = "https://thunder-softworks.weebly.com/",
-	Discord = "dvyct"
 }
