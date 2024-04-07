@@ -1,6 +1,6 @@
 local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/deeeity/mercury-lib/master/src.lua"))()
 local Sense = loadstring(game:HttpGet('https://sirius.menu/sense'))()
-local Chams = false
+
 local GUI = Mercury:Create{
     Name = "Mercury",
     Size = UDim2.fromOffset(600, 400),
@@ -18,18 +18,30 @@ Tab:Toggle{
 	StartingState = false,
 	Description = nil,
 	Callback = function(state) 
-                if Chams == false then
-                Chams = true
-		elseif Chams == true then
-                Chams = false
-		end
+                Sense.teamSettings.enemy.Chams = state
         end
+}
+
+Tab:Toggle{
+	Name = "Boxes",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state) 
+Sense.teamSettings.enemy.box3d = state
+end
 }
 
 Tab:Button{
 	Name = "Load ESP",
 	Description = nil,
 	Callback = function() 
+Sense.teamSettings.enemy.enabled = true
 Sense.Load()
+        end
+Tab:Button{
+	Name = "Unload ESP",
+	Description = nil,
+	Callback = function() 
+Sense.Unload()
         end
 }
