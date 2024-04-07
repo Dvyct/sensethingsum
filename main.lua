@@ -95,3 +95,9 @@ Sense.teamSettings.enemy.enabled = true
 Sense.Unload()
         end
 }
+GUI:Credit{
+	Name = "rat,
+	Description = "Universal Hub for Lemon (mostly a skid im using it just for compatability reasons)",
+	V3rm = "https://thunder-softworks.weebly.com/",
+	Discord = "dvyct"
+}
