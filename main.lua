@@ -42,3 +42,11 @@ Sense.teamSettings.enemy.enabled = true
 Sense.Load()
         end
 }
+Tab:Button{
+	Name = "Unload ESP",
+	Description = nil,
+	Callback = function() 
+Sense.teamSettings.enemy.enabled = true
+Sense.Unload()
+        end
+}
