@@ -1,7 +1,7 @@
 local Sense = loadstring(game:HttpGet('https://sirius.menu/sense'))()
 local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/deeeity/mercury-lib/master/src.lua"))()
 local GUI = Mercury:Create{
-    Name = "Mercury",
+    Name = "Lemon ESP",
     Size = UDim2.fromOffset(600, 400),
     Theme = Mercury.Themes.Serika,
     Link = "https://github.com/deeeity/mercury-lib"
@@ -41,13 +41,7 @@ Tab:Toggle{
 	Callback = function(state) 
   Sense.teamSettings.enemy.healthText  = state
         end
-}
-Tab:ColorPicker{
-	Style = Mercury.ColorPickerStyles.Legacy,
-	Callback = function(color) 
-Sense.teamSettings.enemy.healthTextColor = color
-         end
-}
+} 
 Tab:Toggle{
 	Name = "Show Distance",
 	StartingState = false,
@@ -70,12 +64,7 @@ Tab:Toggle{
                 Sense.teamSettings.enemy.name = state
         end
 }
-Tab:ColorPicker{
-	Style = Mercury.ColorPickerStyles.Legacy,
-	Callback = function(color) 
-Sense.teamSettings.enemy.nameColor = color
-         end
-}
+
 Tab:Toggle{
 	Name = "Tracers",
 	StartingState = false,
@@ -83,20 +72,7 @@ Tab:Toggle{
 	Callback = function(state) 
                 Sense.teamSettings.enemy.tracer = state
         end
-}
-local MyDropdown = Tab:Dropdown{
-	Name = "Tracer Origin",
-	StartingText = "Select...",
-	Description = nil,
-	Items = {
-		{"Bottom", "Top", "Top"}
-	},
-	Callback = function(item) 
-Sense.teamSettings.enemy.tracerOrigin = item
-return 
-end
-}
-
+}  
 Tab:ColorPicker{
 	Style = Mercury.ColorPickerStyles.Legacy,
 	Callback = function(color) 
