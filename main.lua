@@ -3,7 +3,7 @@ local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/deeei
 local GUI = Mercury:Create{
     Name = "Mercury",
     Size = UDim2.fromOffset(600, 400),
-    Theme = Mercury.Themes.Dark,
+    Theme = Mercury.Themes.Serika,
     Link = "https://github.com/deeeity/mercury-lib"
 }
 
