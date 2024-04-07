@@ -1,121 +1,45 @@
--- 1. Load the library
-local Sense = loadstring(game:HttpGet('https://sirius.menu/sense'))()
+-- Load the BoxESP model from ReplicatedStorage
+local BoxESPModel = script.BoxESP -- Assuming BoxESP is stored in ReplicatedStorage
 
--- 2. Change the configuration.
-Sense.teamSettings.enemy.enabled = true
-Sense.teamSettings.enemy.box = true
-Sense.teamSettings.enemy.boxColor[1] = Color3.new(0, 0.25, 0.75)
+-- Function to copy the BoxESP model to a player's HumanoidRootPart
+local function copyBoxESPToPlayer(player)
+	-- Check if the player and their character exist
+	if player and player.Character then
+		local character = player.Character
 
--- 3. Load the esp. It doesn't really matter where you put this, but it's recommended you put it at the end of your script.
-Sense.Load()
+		-- Find the HumanoidRootPart in the character
+		local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+		if humanoidRootPart then
+			-- Clone the BoxESP model
+			local boxESP = BoxESPModel:Clone()
 
--- 4. Unload the esp. When you unload Sense, it will clean up every drawing object and instance it has made.
---Sense.Unload()
+			-- Find the part to weld (assuming BoxESP model has a Part named "PartToWeld")
+			local partToWeld = boxESP:FindFirstChild("PartToWeld")
+			if partToWeld then
+				-- Create a WeldConstraint between the partToWeld and HumanoidRootPart
+				local weld = Instance.new("WeldConstraint")
+				weld.Parent = partToWeld
+				weld.Part0 = partToWeld
+				weld.Part1 = humanoidRootPart
+			end
 
-Sense = {
-  whitelist = {}, -- When this table contains at least 1 user id, it will only show esp for those players.
-  sharedSettings = {
-      textSize = 13,
-      textFont = 2,
-      limitDistance = false, -- Set a maximum render distance
-      maxDistance = 150,
-      useTeamColor = false -- Change all colors to the players team color
-  },
-  teamSettings = {
-      enemy = {
-          enabled = false,
-          box = false,
-          boxColor = { Color3.new(1,0,0), 1 },
-          --boxColor = { "Team Color", 1 }, -- Do this to change a single color to the team color
-          boxOutline = false,
-          boxOutlineColor = { Color3.new(), 1 },
-          boxFill = false,
-          boxFillColor = { Color3.new(1,0,0), 0.5 },
-          healthBar = false,
-          healthyColor = Color3.new(0,1,0),
-          dyingColor = Color3.new(1,0,0),
-          healthBarOutline = true,
-          healthBarOutlineColor = { Color3.new(), 0.5 },
-          healthText = false,
-          healthTextColor = { Color3.new(1,1,1), 1 },
-          healthTextOutline = true,
-          healthTextOutlineColor = Color3.new(),
-          box3d = true,
-          box3dColor = { Color3.new(1,0,0), 1 },
-          name = true,
-          nameColor = { Color3.new(1,1,1), 1 },
-          nameOutline = true,
-          nameOutlineColor = Color3.new(),
-          weapon = false,
-          weaponColor = { Color3.new(1,1,1), 1 },
-          weaponOutline = true,
-          weaponOutlineColor = Color3.new(),
-          distance = false,
-          distanceColor = { Color3.new(1,1,1), 1 },
-          distanceOutline = true,
-          distanceOutlineColor = Color3.new(),
-          tracer = true,
-          tracerOrigin = "Bottom",
-          tracerColor = { Color3.new(1,0,0), 1 },
-          tracerOutline = true,
-          tracerOutlineColor = { Color3.new(), 1 },
-          offScreenArrow = false,
-          offScreenArrowColor = { Color3.new(1,1,1), 1 },
-          offScreenArrowSize = 15,
-          offScreenArrowRadius = 150,
-          offScreenArrowOutline = true,
-          offScreenArrowOutlineColor = { Color3.new(), 1 },
-          chams = true,
-          chamsVisibleOnly = false,
-          chamsFillColor = { Color3.new(0.2, 0.2, 0.2), 0.5 },
-          chamsOutlineColor = { Color3.new(1,0,0), 0 },
-      },
-      friendly = {
-          enabled = false,
-          box = false,
-          boxColor = { Color3.new(0,1,0), 1 },
-          boxOutline = true,
-          boxOutlineColor = { Color3.new(), 1 },
-          boxFill = false,
-          boxFillColor = { Color3.new(0,1,0), 0.5 },
-          healthBar = false,
-          healthyColor = Color3.new(0,1,0),
-          dyingColor = Color3.new(1,0,0),
-          healthBarOutline = true,
-          healthBarOutlineColor = { Color3.new(), 0.5 },
-          healthText = false,
-          healthTextColor = { Color3.new(1,1,1), 1 },
-          healthTextOutline = true,
-          healthTextOutlineColor = Color3.new(),
-          box3d = true,
-          box3dColor = { Color3.new(0,1,0), 1 },
-          name = false,
-          nameColor = { Color3.new(1,1,1), 1 },
-          nameOutline = true,
-          nameOutlineColor = Color3.new(),
-          weapon = false,
-          weaponColor = { Color3.new(1,1,1), 1 },
-          weaponOutline = true,
-          weaponOutlineColor = Color3.new(),
-          distance = false,
-          distanceColor = { Color3.new(1,1,1), 1 },
-          distanceOutline = true,
-          distanceOutlineColor = Color3.new(),
-          tracer = false,
-          tracerOrigin = "Bottom",
-          tracerColor = { Color3.new(0,1,0), 1 },
-          tracerOutline = true,
-          tracerOutlineColor = { Color3.new(), 1 },
-          offScreenArrow = false,
-          offScreenArrowColor = { Color3.new(1,1,1), 1 },
-          offScreenArrowSize = 15,
-          offScreenArrowRadius = 150,
-          offScreenArrowOutline = true,
-          offScreenArrowOutlineColor = { Color3.new(), 1 },
-          chams = true,
-          chamsVisibleOnly = false,
-          chamsFillColor = { Color3.new(0.2, 0.2, 0.2), 0.5 },
-          chamsOutlineColor = { Color3.new(0,1,0), 0 }
-      }
-  }
-}
+			-- Parent the BoxESP to the character's HumanoidRootPart
+			boxESP.Parent = humanoidRootPart
+		end
+	end
+end
+
+-- Function to copy BoxESP to all players in the game
+local function copyBoxESPToAllPlayers()
+	for _, player in ipairs(game.Players:GetPlayers()) do
+		copyBoxESPToPlayer(player)
+	end
+end
+
+-- Copy BoxESP to all existing players
+copyBoxESPToAllPlayers()
+
+-- Connect a function to copy BoxESP to new players when they are added
+game.Players.PlayerAdded:Connect(function(player)
+	copyBoxESPToPlayer(player)
+end)
