@@ -1,65 +1,27 @@
--- Gui to Lua
--- Version: 3.2
+local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/deeeity/mercury-lib/master/src.lua"))()
+local Sense = loadstring(game:HttpGet('https://sirius.menu/sense'))()
+local Chams = false
+local GUI = Mercury:Create{
+    Name = "Mercury",
+    Size = UDim2.fromOffset(600, 400),
+    Theme = Mercury.Themes.Dark,
+    Link = "https://github.com/deeeity/mercury-lib"
+}
 
--- Instances:
+local Tab = GUI:Tab{
+	Name = "New Tab",
+	Icon = "rbxassetid://8569322835"
+}
 
-local ScreenGui = Instance.new("ScreenGui")
-
---Properties:
-
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
--- Scripts:
-
-local function YTMQLJN_fake_script() -- ScreenGui.LocalScript 
-	local script = Instance.new('LocalScript', ScreenGui)
-
-	-- Load the BoxESP model from ReplicatedStorage
-	local BoxESPModel = script.BoxESP -- Assuming BoxESP is stored in ReplicatedStorage
-	
-	-- Function to copy the BoxESP model to a player's HumanoidRootPart
-	local function copyBoxESPToPlayer(player)
-		-- Check if the player and their character exist
-		if player and player.Character then
-			local character = player.Character
-	
-			-- Find the HumanoidRootPart in the character
-			local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
-			if humanoidRootPart then
-				-- Clone the BoxESP model
-				local boxESP = BoxESPModel:Clone()
-	
-				-- Find the part to weld (assuming BoxESP model has a Part named "PartToWeld")
-				local partToWeld = boxESP:FindFirstChild("PartToWeld")
-				if partToWeld then
-					-- Create a WeldConstraint between the partToWeld and HumanoidRootPart
-					local weld = Instance.new("WeldConstraint")
-					weld.Parent = partToWeld
-					weld.Part0 = partToWeld
-					weld.Part1 = humanoidRootPart
-				end
-	
-				-- Parent the BoxESP to the character's HumanoidRootPart
-				boxESP.Parent = humanoidRootPart
-			end
+Tab:Toggle{
+	Name = "Chams",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state) 
+                if Chams == false then
+                Chams = true
+		elseif Chams == true then
+                Chams = false
 		end
-	end
-	
-	-- Function to copy BoxESP to all players in the game
-	local function copyBoxESPToAllPlayers()
-		for _, player in ipairs(game.Players:GetPlayers()) do
-			copyBoxESPToPlayer(player)
-		end
-	end
-	
-	-- Copy BoxESP to all existing players
-	copyBoxESPToAllPlayers()
-	
-	-- Connect a function to copy BoxESP to new players when they are added
-	game.Players.PlayerAdded:Connect(function(player)
-		copyBoxESPToPlayer(player)
-	end)
-	
-end
-coroutine.wrap(YTMQLJN_fake_script)()
+        end
+}
