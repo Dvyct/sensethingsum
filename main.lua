@@ -59,3 +59,10 @@ Tab:Button{
 Sense.Unload()
         end
 }
+
+GUI:Credit{
+	Name = "rat",
+	Description = "Lemon Hub script the gui is temporary",
+	V3rm = "",
+	Discord = "dvyct"
+}
