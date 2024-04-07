@@ -97,6 +97,28 @@ Sense.teamSettings.enemy.enabled = true
 Sense.Unload()
         end
 }
+local Tab = GUI:Tab{
+	Name = "AIMBOT",
+	Icon = "rbxassetid://8569322835"
+}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Dvyct/lemonaimbot/main/main.lua"))() 
+Tab:Toggle{
+	Name = "Aimbot Enabled",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state) 
+_G.AimbotEnabled = state
+end
+Tab:Slider{
+	Name = "Aimbot Sensitivity",
+	Default = 0.1,
+	Min = 0,
+	Max = 2,
+	Callback = function(state) 
+        _G.AimbotSensitivity = state
+        end
+}
+}
 GUI:Credit{
 	Name = "rat",
 	Description = "Universal Hub for Lemon (mostly a skid im using it just for compatability reasons)",
