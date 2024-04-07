@@ -1,5 +1,5 @@
---[ 
-
+-- made by rat / dvyct on discord
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Dvyct/lemonaimbot/main/main.lua"))() 
 local Sense = loadstring(game:HttpGet('https://sirius.menu/sense'))()
 local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/deeeity/mercury-lib/master/src.lua"))()
 local GUI = Mercury:Create{
@@ -101,7 +101,6 @@ local Tab = GUI:Tab{
 	Name = "AIMBOT",
 	Icon = "rbxassetid://8569322835"
 }
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Dvyct/lemonaimbot/main/main.lua"))() 
 Tab:Toggle{
 	Name = "Aimbot Enabled",
 	StartingState = false,
