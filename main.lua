@@ -31,7 +31,76 @@ Tab:Toggle{
 	Description = nil,
 	Callback = function(state) 
                 Sense.teamSettings.enemy.healthBar  = state
-                Sense.teamSettings.enemy.healthText  = state
+        end
+}
+
+Tab:Toggle{
+	Name = "Show HealthText",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state) 
+  Sense.teamSettings.enemy.healthText  = state
+        end
+}
+Tab:ColorPicker{
+	Style = Mercury.ColorPickerStyles.Legacy,
+	Callback = function(color) 
+Sense.teamSettings.enemy.healthTextColor = color
+         end
+}
+Tab:Toggle{
+	Name = "Show Distance",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state) 
+                Sense.teamSettings.enemy.distance = true
+        end
+}
+Tab:ColorPicker{
+	Style = Mercury.ColorPickerStyles.Legacy,
+	Callback = function(color) 
+Sense.teamSettings.enemy.distanceColor = color
+         end
+}
+Tab:Toggle{
+	Name = "Show Name",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state) 
+                Sense.teamSettings.enemy.name = state
+        end
+}
+Tab:ColorPicker{
+	Style = Mercury.ColorPickerStyles.Legacy,
+	Callback = function(color) 
+Sense.teamSettings.enemy.nameColor = color
+         end
+}
+Tab:Toggle{
+	Name = "Tracers",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state) 
+                Sense.teamSettings.enemy.tracer = state
+        end
+}
+local MyDropdown = Tab:Dropdown{
+	Name = "Tracer Origin",
+	StartingText = "Select...",
+	Description = nil,
+	Items = {
+		{"Bottom", "Top"}
+	},
+	Callback = function(item) 
+Sense.teamSettings.enemy.tracerOrigin = item
+return 
+end
+}
+
+Tab:ColorPicker{
+	Style = Mercury.ColorPickerStyles.Legacy,
+	Callback = function(color) 
+Sense.teamSettings.enemy.tracerColor = color
         end
 }
 Tab:Button{
