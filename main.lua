@@ -89,7 +89,7 @@ local MyDropdown = Tab:Dropdown{
 	StartingText = "Select...",
 	Description = nil,
 	Items = {
-		{"Bottom", "Top"}
+		{"Bottom", "Top", "Top"}
 	},
 	Callback = function(item) 
 Sense.teamSettings.enemy.tracerOrigin = item
