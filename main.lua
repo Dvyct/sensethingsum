@@ -11,16 +11,20 @@ local Tab = GUI:Tab{
 	Name = "ESP",
 	Icon = "rbxassetid://8569322835"
 }
-
 Tab:Toggle{
-	Name = "Chams",
-	StartingState = false,
-	Description = nil,
-	Callback = function(state) 
-                Sense.teamSettings.enemy.Chams = state
-        end
+    Name = "Boxes",
+    StartingState = false,
+    Description = nil,
+    Callback = function(state) 
+Sense.teamSettings.enemy.box3d = state
+end
 }
-
+Tab:ColorPicker{
+    Style = Mercury.ColorPickerStyles.Legacy,
+    Callback = function(color)
+       Sense.teamSettings.enemy.box3dColor[1] = color
+       end
+}
 Tab:Toggle{
 	Name = "HealthBar",
 	StartingState = false,
