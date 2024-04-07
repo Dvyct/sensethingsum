@@ -25,3 +25,11 @@ Tab:Toggle{
 		end
         end
 }
+
+Tab:Button{
+	Name = "Load ESP",
+	Description = nil,
+	Callback = function() 
+Sense.Load()
+        end
+}
