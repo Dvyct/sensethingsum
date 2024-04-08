@@ -1,4 +1,5 @@
 -- made by rat / dvyct on discord extra commit
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Dvyct/lemonaimbot/main/main.lua"))()
 local Sense = loadstring(game:HttpGet('https://sirius.menu/sense'))()
 local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/deeeity/mercury-lib/master/src.lua"))()
 local GUI = Mercury:Create{
@@ -95,4 +96,28 @@ Tab:Button{
 Sense.teamSettings.enemy.enabled = true
 Sense.Unload()
         end
+}
+local Tab = GUI:Tab{
+	Name = "Aimbot",
+	Icon = "rbxassetid://8569322835"
+}
+Tab:Toggle{
+	Name = "Aimbot Enabled",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state) 
+        _G.AimbotEnabled = state
+        end
+}
+local MyDropdown = Tab:Dropdown{
+	Name = "Dropdown",
+	StartingText = "Select...",
+	Description = nil,
+	Items = {
+		{"Head", "Torso"}, 		
+	},
+	Callback = function(item) 
+_G.AimbotPart = item
+return 
+end
 }
