@@ -1,5 +1,7 @@
 -- made by rat / dvyct on discord extra commit
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Dvyct/lemonaimbot/main/main.lua"))()
+_G.AimbotEnabled = false
+_G.AimbotPart = "Head"
 local Sense = loadstring(game:HttpGet('https://sirius.menu/sense'))()
 local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/deeeity/mercury-lib/master/src.lua"))()
 local GUI = Mercury:Create{
