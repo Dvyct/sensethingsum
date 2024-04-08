@@ -106,7 +106,6 @@ Tab:Toggle{
 	StartingState = false,
 	Description = nil,
 	Callback = function(state) 
-        _G.AimbotEnabled = state
         Print(state)
         end
 }
@@ -119,6 +118,7 @@ local MyDropdown = Tab:Dropdown{
 	},
 	Callback = function(item) 
 _G.AimbotPart = item
+print(item)
 return 
 end
 }
