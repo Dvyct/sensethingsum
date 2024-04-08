@@ -107,6 +107,7 @@ Tab:Toggle{
 	Description = nil,
 	Callback = function(state) 
         _G.AimbotEnabled = state
+        Print(state)
         end
 }
 local MyDropdown = Tab:Dropdown{
@@ -114,7 +115,7 @@ local MyDropdown = Tab:Dropdown{
 	StartingText = "Select...",
 	Description = nil,
 	Items = {
-		{"Head", "Torso"}, 		
+		{"Head"},{"Torso"} 		
 	},
 	Callback = function(item) 
 _G.AimbotPart = item
